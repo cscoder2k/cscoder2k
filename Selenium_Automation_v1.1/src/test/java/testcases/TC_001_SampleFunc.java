@@ -26,7 +26,7 @@ public class TC_001_SampleFunc extends Base {
 			homepage.closeApp();
 
 		} catch (Exception e) {
-			testcaseexception(reporting, e);
+			teardownexception(reporting, e);
 		}
 	}
 

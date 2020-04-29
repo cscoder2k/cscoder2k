@@ -203,12 +203,13 @@ public class Base extends GenericReusbales {
 		Reporting.summaryTable(testcasename, reportPath, exreport.getStatus().toString(), duration);
 	}
 
-	public void testcaseexception(Reporting reporting, Exception e) {
+	public void teardownexception(Reporting reporting, Exception e) {
 		try {
 			reporting.report(Status.FAIL, testcasename + " - Exception Occured.  " + e.getMessage());
 		} catch (Exception e1) {
 			System.out.println(testcasename + " - Exception Occured.  " + e.getMessage());
 			e1.printStackTrace();
+			driver.close();
 		}
 		Assert.assertEquals(true, false);
 	}
