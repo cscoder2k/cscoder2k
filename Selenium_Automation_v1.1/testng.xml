@@ -9,21 +9,21 @@
 		</classes>
 	</test>
 	<test name="Regression Test 2">
-		<parameter name="browser" value="ie" />
+		<parameter name="browser" value="chrome" />
 		<parameter name="environment" value="01" />
 		<classes>
 			<class name="testcases.TC_002_SampleFunc" />
 		</classes>
 	</test>
 	<test name="Regression Test 3">
-		<parameter name="browser" value="ie" />
+		<parameter name="browser" value="chrome" />
 		<parameter name="environment" value="01" />
 		<classes>
 			<class name="testcases.TC_003_SampleFunc" />
 		</classes>
 	</test>
 	<test name="Regression Test 4">
-		<parameter name="browser" value="ie" />
+		<parameter name="browser" value="chrome" />
 		<parameter name="environment" value="01" />
 		<classes>
 			<class name="testcases.TC_004_SampleFunc" />

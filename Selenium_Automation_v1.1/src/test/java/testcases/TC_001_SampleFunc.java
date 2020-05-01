@@ -12,15 +12,15 @@ public class TC_001_SampleFunc extends Base {
 
 	public TC_001_SampleFunc() {
 		testcasename = this.getClass().getSimpleName();
+		testcase.put("testcasename", testcasename);
 		description = "To check the login functionality of the application";
 	}
 
 	@Test
 	public void testcase() {
 		try {
-			homepage = new HomePage(driver, environment, workbook, testcasename, exreport, screenshotfolder,
-					StatusCounter);
-			reporting = new Reporting(driver, environment, testcasename, exreport, screenshotfolder, StatusCounter);
+			homepage = new HomePage(testcase);
+			reporting = new Reporting(testcase);
 
 			homepage.launchApp();
 			homepage.closeApp();

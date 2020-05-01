@@ -3,6 +3,7 @@ package utils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.HashMap;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -15,10 +16,10 @@ public class Datatable {
 	public XSSFSheet sheet;
 	public String testcasename, sheetName, datatablePath;
 
-	public Datatable(XSSFWorkbook workbook, String testcasename, String sheetName) {
-		this.workbook = workbook;
-		this.testcasename = testcasename;
-		this.sheetName = sheetName;
+	public Datatable(HashMap testcase) {
+		this.workbook = (XSSFWorkbook) testcase.get("workbook");
+		this.testcasename = (String) testcase.get("testcasename");
+		this.sheetName = (String) testcase.get("sheetName");
 		sheet = this.workbook.getSheet(sheetName);
 	}
 

@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Regression Test 1</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Apr 29 22:43:18 IST 2020</td>
+<td>Started on:</td><td>Fri May 01 14:33:08 IST 2020</td>
 </tr>
-<tr><td>Total time:</td><td>14 seconds (14823 ms)</td>
+<tr><td>Total time:</td><td>17 seconds (17080 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,70 +67,61 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-failed'>
-<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td width="30%"><b>Exception</b></td>
 <td width="10%"><b>Time (seconds)</b></td>
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='testcases.TC_001_SampleFunc.testcase()'><b>testcase</b><br>Test class: testcases.TC_001_SampleFunc<br/>
-<a href="#Output-1802298894" onClick='toggleBox("Output-1802298894", this, "Show output", "Hide output");'>Show output</a>
+<td title='testcases.TC_003_SampleFunc.testcase()'><b>testcase</b><br>Test class: testcases.TC_003_SampleFunc<br/>
+<a href="#Output-696813165" onClick='toggleBox("Output-696813165", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-1802298894" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-1802298894">
+<a href="#Output-696813165" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-696813165">
 Clicked on By.cssSelector: input[id='btnLogin']<br/>
 </div>
 </td>
-<td><div><pre>junit.framework.AssertionFailedError: expected:&lt;true&gt; but was:&lt;false&gt;
-	at junit.framework.Assert.fail(Assert.java:47)
-	at junit.framework.Assert.failNotEquals(Assert.java:282)
-	at junit.framework.Assert.assertEquals(Assert.java:64)
-	at junit.framework.Assert.assertEquals(Assert.java:149)
-	at junit.framework.Assert.assertEquals(Assert.java:155)
-	at core.Base.testcaseexception(Base.java:198)
-	at testcases.TC_001_SampleFunc.testcase(TC_001_SampleFunc.java:29)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1510)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:832)
-... Removed 18 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1802298894", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1802298894'><pre>junit.framework.AssertionFailedError: expected:&lt;true&gt; but was:&lt;false&gt;
-	at junit.framework.Assert.fail(Assert.java:47)
-	at junit.framework.Assert.failNotEquals(Assert.java:282)
-	at junit.framework.Assert.assertEquals(Assert.java:64)
-	at junit.framework.Assert.assertEquals(Assert.java:149)
-	at junit.framework.Assert.assertEquals(Assert.java:155)
-	at core.Base.testcaseexception(Base.java:198)
-	at testcases.TC_001_SampleFunc.testcase(TC_001_SampleFunc.java:29)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:134)
-	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:597)
-	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:816)
-	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1510)
-	at org.testng.TestRunner.privateRun(TestRunner.java:766)
-	at org.testng.TestRunner.run(TestRunner.java:587)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
-	at org.testng.SuiteRunner.access$000(SuiteRunner.java:28)
-	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:425)
-	at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:68)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:832)
-</pre></div></td>
-<td>10</td>
-<td>testcases.TC_001_SampleFunc@6d4d66d2</td></tr>
+<td></td>
+<td>11</td>
+<td>testcases.TC_003_SampleFunc@1700915</td></tr>
+<tr>
+<td title='testcases.TC_001_SampleFunc.testcase()'><b>testcase</b><br>Test class: testcases.TC_001_SampleFunc<br/>
+<a href="#Output-1436814657" onClick='toggleBox("Output-1436814657", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1436814657" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1436814657">
+Clicked on By.cssSelector: input[id='btnLogin']<br/>
+</div>
+</td>
+<td></td>
+<td>12</td>
+<td>testcases.TC_001_SampleFunc@22a637e7</td></tr>
+<tr>
+<td title='testcases.TC_004_SampleFunc.testcase()'><b>testcase</b><br>Test class: testcases.TC_004_SampleFunc<br/>
+<a href="#Output-647638137" onClick='toggleBox("Output-647638137", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-647638137" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-647638137">
+Clicked on By.cssSelector: input[id='btnLogin']<br/>
+</div>
+</td>
+<td></td>
+<td>13</td>
+<td>testcases.TC_004_SampleFunc@1139b2f3</td></tr>
+<tr>
+<td title='testcases.TC_002_SampleFunc.testcase()'><b>testcase</b><br>Test class: testcases.TC_002_SampleFunc<br/>
+<a href="#Output-2061072842" onClick='toggleBox("Output-2061072842", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2061072842" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2061072842">
+Clicked on By.cssSelector: input[id='btnLogin']<br/>
+</div>
+</td>
+<td></td>
+<td>13</td>
+<td>testcases.TC_002_SampleFunc@654f0d9c</td></tr>
 </table><p>
 </body>
 </html>

@@ -3,53 +3,37 @@ package pages;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import com.aventstack.extentreports.ExtentTest;
 
 import utils.Datatable;
 import utils.GenericReusbales;
 import utils.ObjectHandlers;
-import utils.ReadConfig;
 import utils.Reporting;
 
-interface HomepageElements {
-
-}
-
-public class HomePage extends GenericReusbales implements HomepageElements {
+public class HomePage extends GenericReusbales {
 	String sheetName = this.getClass().getSimpleName();
-	String testcasename, environment, screenshotfolder;
+	String environment;
 	WebDriver driver;
-	ExtentTest exreport;
-	XSSFWorkbook workbook;
-	static HashMap<String, Integer> StatusCount;
 
 	Datatable datatable;
 	ObjectHandlers object;
 	Reporting reporting;
-	ReadConfig config;
+	HashMap testcase;
 
-	public HomePage(WebDriver driver, String environment, XSSFWorkbook workbook, String testcasename,
-			ExtentTest exreport, String screenshotfolder, HashMap<String, Integer> StatusCount) {
-		this.driver = driver;
-		this.workbook = workbook;
-		this.testcasename = testcasename;
-		this.environment = environment;
-		this.exreport = exreport;
-		this.screenshotfolder = screenshotfolder;
-		this.StatusCount = StatusCount;
+	public HomePage(HashMap testcase) {
+		this.testcase = testcase;
+		this.testcase.put("sheetName", sheetName);
+		this.driver = (WebDriver) testcase.get("driver");
+		this.environment = (String) testcase.get("environment");
 		instantiate();
 
 	}
 
 	public void instantiate() {
-		datatable = new Datatable(workbook, testcasename, sheetName);
-		object = new ObjectHandlers(driver, environment, testcasename, exreport, screenshotfolder, StatusCount);
-		reporting = new Reporting(driver, environment, testcasename, exreport, screenshotfolder, StatusCount);
-		config = new ReadConfig();
+		datatable = new Datatable(testcase);
+		object = new ObjectHandlers(testcase);
+		reporting = new Reporting(testcase);
 	}
 
 	By EDT_USERNAME = By.cssSelector("input[id='txtUsername']");
@@ -67,7 +51,7 @@ public class HomePage extends GenericReusbales implements HomepageElements {
 
 		// Launch url
 		String URL_VAR = "url_" + environment;
-		String url = config.getConfig(URL_VAR);
+		String url = getConfig(URL_VAR);
 		driver.get(url);
 
 		driver.manage().window().maximize();
@@ -89,7 +73,7 @@ public class HomePage extends GenericReusbales implements HomepageElements {
 	public void closeApp() throws Exception {
 		// Close browser
 		driver.close();
-		System.out.println(testcasename + " - Browser Closed");
+		System.out.println(testcase.get("testcasename") + " - Browser Closed");
 	}
 
 }

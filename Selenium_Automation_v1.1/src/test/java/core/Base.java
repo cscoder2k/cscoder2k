@@ -27,7 +27,6 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
 import junit.framework.Assert;
 import utils.GenericReusbales;
-import utils.ReadConfig;
 import utils.Reporting;
 
 public class Base extends GenericReusbales {
@@ -37,7 +36,7 @@ public class Base extends GenericReusbales {
 	public final String defaultenvironment = "01";
 
 	public WebDriver driver;
-	public static Logger logger;
+	public Logger logger;
 	public ExtentReports extent;
 	public ExtentHtmlReporter htmlreporter;
 	public String reportPath, screenshotfolder;
@@ -49,16 +48,16 @@ public class Base extends GenericReusbales {
 	public int passCount, failCount, warnCount, totalCount;
 	public String datatablePath, environment;
 	public XSSFWorkbook workbook;
-	String duration;
 	public String testcasename, description;
-	public static String startTime, endTime;
+	public String startTime, endTime, duration;
 	public static HashMap<String, Integer> StatusCounter = new HashMap<String, Integer>();
-	public HashMap testdetails = new HashMap();
+	public HashMap testcase = new HashMap();
 
 	/**
 	 * Object Creation
 	 */
-	ReadConfig config = new ReadConfig();
+	GenericReusbales generic = new GenericReusbales();
+	Reporting reporting = new Reporting(testcase);
 
 	@BeforeSuite
 	public void beforeSuite() throws IOException {
@@ -87,11 +86,12 @@ public class Base extends GenericReusbales {
 		initExtentReport(env, browsername);
 
 		// Assign the test case details into hashmap
-		testdetails.put("driver", driver);
-		testdetails.put("environment", environment);
-		testdetails.put("workbook", workbook);
-		testdetails.put("exreport", exreport);
-
+		testcase.put("driver", driver);
+		testcase.put("environment", environment);
+		testcase.put("workbook", workbook);
+		testcase.put("exreport", exreport);
+		testcase.put("screenshotfolder", screenshotfolder);
+		testcase.put("StatusCounter", StatusCounter);
 	}
 
 	@AfterClass
@@ -105,7 +105,7 @@ public class Base extends GenericReusbales {
 	@Parameters({ "browser" })
 	public void afterSuite(@Optional(defaultbrowser) String browsername) throws IOException {
 		endTime = getTime();
-		String reporthPath = Reporting.reportSummary(Reporting.frameReportSummaryHTML(startTime, endTime));
+		String reporthPath = reporting.reportSummary(reporting.frameReportSummaryHTML(startTime, endTime));
 		// Initialize WebDriver
 		initWebDriver(browsername);
 		driver.get(reporthPath);
@@ -121,10 +121,10 @@ public class Base extends GenericReusbales {
 
 	public void initWebDriver(String browsername) throws IOException {
 		if (browsername.equalsIgnoreCase("chrome")) {
-			System.setProperty("webdriver.chrome.driver", config.getConfig("chromedriver"));
+			System.setProperty("webdriver.chrome.driver", generic.getConfig("chromedriver"));
 			driver = new ChromeDriver();
 		} else if (browsername.equalsIgnoreCase("ie")) {
-			System.setProperty("webdriver.ie.driver", config.getConfig("iedriver"));
+			System.setProperty("webdriver.ie.driver", generic.getConfig("iedriver"));
 //			DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
 //			capabilities.setCapability(CapabilityType.BROWSER_NAME, "IE");
 //			capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
@@ -135,10 +135,10 @@ public class Base extends GenericReusbales {
 			driver = new InternetExplorerDriver(options);
 
 		} else if (browsername.equalsIgnoreCase("firefox")) {
-			System.setProperty("webdriver.gecko.driver", config.getConfig("operadriver"));
+			System.setProperty("webdriver.gecko.driver", generic.getConfig("operadriver"));
 			driver = new FirefoxDriver();
 		} else if (browsername.equalsIgnoreCase("opera")) {
-			System.setProperty("webdriver.opera.driver", config.getConfig("operadriver"));
+			System.setProperty("webdriver.opera.driver", generic.getConfig("operadriver"));
 			driver = new OperaDriver();
 		}
 
@@ -169,19 +169,19 @@ public class Base extends GenericReusbales {
 		screenshotfolder = testreportfolder + "/Screenshots";
 		createFolder(screenshotfolder);
 
-		// Create summary Folder
-		String reportsummaryfolder = reportFolder + "/" + "TestSummary";
-		createFolder(reportsummaryfolder);
+//		// Create summary Folder
+//		String reportsummaryfolder = reportFolder + "/" + "TestSummary";
+//		createFolder(reportsummaryfolder);
 
 		// start reporters
 		htmlreporter = new ExtentHtmlReporter(reportPath);
-		htmlreporter.config().setReportName(config.getConfig("projectTitle"));
+		htmlreporter.config().setReportName(generic.getConfig("projectTitle"));
 
 		// create extentReports and attach reporter(s)
 		extent = new ExtentReports();
 		extent.attachReporter(htmlreporter);
-		extent.setSystemInfo("Project", config.getConfig("projectTitle"));
-		extent.setSystemInfo("Application", config.getConfig("application"));
+		extent.setSystemInfo("Project", generic.getConfig("projectTitle"));
+		extent.setSystemInfo("Application", generic.getConfig("application"));
 		extent.setSystemInfo("Environment", env);
 		extent.setSystemInfo("Browser", browsername);
 		exreport = extent.createTest(testcasename, description);
@@ -200,7 +200,7 @@ public class Base extends GenericReusbales {
 		TestCaseEndTime = getNow();
 		String duration = exreport.getModel().getRunDuration();
 		extent.flush();
-		Reporting.summaryTable(testcasename, reportPath, exreport.getStatus().toString(), duration);
+		reporting.summaryTable(testcasename, reportPath, exreport.getStatus().toString(), duration);
 	}
 
 	public void teardownexception(Reporting reporting, Exception e) {

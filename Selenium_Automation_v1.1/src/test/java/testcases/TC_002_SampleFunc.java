@@ -10,6 +10,7 @@ public class TC_002_SampleFunc extends Base {
 
 	public TC_002_SampleFunc() {
 		testcasename = this.getClass().getSimpleName();
+		testcase.put("testcasename", testcasename);
 		description = "To check the login functionality of the application";
 	}
 
@@ -19,9 +20,8 @@ public class TC_002_SampleFunc extends Base {
 	@Test
 	public void testcase() {
 		try {
-			homepage = new HomePage(driver, environment, workbook, testcasename, exreport, screenshotfolder,
-					StatusCounter);
-			reporting = new Reporting(driver, environment, testcasename, exreport, screenshotfolder, StatusCounter);
+			homepage = new HomePage(testcase);
+			reporting = new Reporting(testcase);
 
 			homepage.launchApp();
 			homepage.closeApp();

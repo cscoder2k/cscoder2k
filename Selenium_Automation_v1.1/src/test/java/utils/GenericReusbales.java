@@ -1,9 +1,13 @@
 package utils;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
 
 import org.apache.log4j.Logger;
 
@@ -12,11 +16,14 @@ public class GenericReusbales {
 	public static int MAX_TIMEOUT = DEFAULT_MAX_TIMEOUT;
 	public static String reportTable = "";
 	public static Logger log;
+	public Properties prop = new Properties();
+	public InputStream input;
 
-//	public GenericReusbales() {
-//		Base base = new Base();
-//		log = base.logger;
-//	}
+	public String getConfig(String key) throws IOException {
+		input = new FileInputStream("./config.properties");
+		prop.load(input);
+		return prop.getProperty(key);
+	}
 
 	public static String timeStamp() {
 		// Create object of SimpleDateFormat class and decide the format

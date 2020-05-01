@@ -25,23 +25,18 @@ public class ObjectHandlers extends GenericReusbales {
 	String screenshotfolder, testcasename;
 	WebDriver driver;
 	ExtentTest exreport;
-	HashMap<String, Integer> StatusCount;
 	Reporting reporting;
 	String environment;
+	HashMap testcase;
 
-	public ObjectHandlers(WebDriver driver, String environment, String testcasename, ExtentTest exreport,
-			String screenshotPath, HashMap<String, Integer> StatusCount) {
-		this.driver = driver;
-		this.environment = environment;
-		this.testcasename = testcasename;
-		this.exreport = exreport;
-		this.screenshotfolder = screenshotfolder;
-		this.StatusCount = StatusCount;
+	public ObjectHandlers(HashMap testcase) {
+		this.testcase = testcase;
+		this.driver = (WebDriver) testcase.get("driver");
 		instantiate();
 	}
 
 	public void instantiate() {
-		reporting = new Reporting(driver, environment, testcasename, exreport, screenshotfolder, StatusCount);
+		reporting = new Reporting(testcase);
 	}
 
 	/*********************************************
