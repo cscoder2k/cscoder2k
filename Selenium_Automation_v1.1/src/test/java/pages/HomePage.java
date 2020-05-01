@@ -29,7 +29,6 @@ public class HomePage extends GenericReusbales {
 		this.driver = (WebDriver) testcase.get("driver");
 		this.environment = (String) testcase.get("environment");
 		instantiate();
-
 	}
 
 	public void instantiate() {
