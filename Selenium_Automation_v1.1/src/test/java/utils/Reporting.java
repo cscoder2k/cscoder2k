@@ -20,17 +20,22 @@ public class Reporting extends GenericReusbales {
 	String screenshotfolder;
 	WebDriver driver;
 	ExtentTest exreport;
-	static HashMap<String, Integer> StatusCounter;
-	String reportsummaryfolder;
-	String environment;
+	static HashMap<String, HashMap<String, Integer>> AllTestStatusCounter = new HashMap<String, HashMap<String, Integer>>();
+	final String reportsummaryfolder = System.getProperty("user.dir") + "/extentreports/" + "/TestSummary";
+	String environment, testcasename;
 	GenericReusbales generic;
+	Object testobject;
 
 	public Reporting(HashMap testcase) {
 		this.driver = (WebDriver) testcase.get("driver");
 		this.environment = (String) testcase.get("environment");
 		this.exreport = (ExtentTest) testcase.get("exreport");
 		this.screenshotfolder = (String) testcase.get("screenshotfolder");
-		this.StatusCounter = (HashMap<String, Integer>) testcase.get("StatusCounter");
+		this.testcasename = (String) testcase.get("testcasename");
+		// this.StatusCounter = (HashMap<String, Integer>)
+		// testcase.get("StatusCounter");
+		AllTestStatusCounter.put(testcasename, (HashMap<String, Integer>) testcase.get("StatusCounter"));
+
 		instantiate();
 	}
 
@@ -38,7 +43,15 @@ public class Reporting extends GenericReusbales {
 		generic = new GenericReusbales();
 	}
 
+	public void initStatusCounter() {
+		AllTestStatusCounter.get(testcasename).put("passCount", 0);
+		AllTestStatusCounter.get(testcasename).put("failCount", 0);
+		AllTestStatusCounter.get(testcasename).put("warnCount", 0);
+		AllTestStatusCounter.get(testcasename).put("totalCount", 0);
+	}
+
 	public void report(Status status, String description) throws Exception {
+
 		String scpath = getScreenshot(screenshotfolder);
 		if (status.equals(Status.INFO)) {
 			System.out.println(status + " - " + description);
@@ -48,34 +61,83 @@ public class Reporting extends GenericReusbales {
 			exreport.log(status, description, MediaEntityBuilder.createScreenCaptureFromPath(scpath).build());
 		}
 
-		StatusCounter.put("totalCount", StatusCounter.get("totalCount") + 1);
+		AllTestStatusCounter.get(testcasename).put("totalCount",
+				AllTestStatusCounter.get(testcasename).get("totalCount") + 1);
 		switch (status) {
 		case PASS:
-			StatusCounter.put("passCount", StatusCounter.get("passCount") + 1);
+			AllTestStatusCounter.get(testcasename).put("passCount",
+					AllTestStatusCounter.get(testcasename).get("passCount") + 1);
 			break;
 		case INFO:
-			StatusCounter.put("passCount", StatusCounter.get("passCount") + 1);
+			AllTestStatusCounter.get(testcasename).put("passCount",
+					AllTestStatusCounter.get(testcasename).get("passCount") + 1);
 			break;
 		case SKIP:
-			StatusCounter.put("passCount", StatusCounter.get("passCount") + 1);
+			AllTestStatusCounter.get(testcasename).put("passCount",
+					AllTestStatusCounter.get(testcasename).get("passCount") + 1);
 			break;
 		case FAIL:
-			StatusCounter.put("failCount", StatusCounter.get("failCount") + 1);
+			AllTestStatusCounter.get(testcasename).put("failCount",
+					AllTestStatusCounter.get(testcasename).get("failCount") + 1);
 			break;
 		case DEBUG:
-			StatusCounter.put("failCount", StatusCounter.get("failCount") + 1);
+			AllTestStatusCounter.get(testcasename).put("failCount",
+					AllTestStatusCounter.get(testcasename).get("failCount") + 1);
 			break;
 		case ERROR:
-			StatusCounter.put("failCount", StatusCounter.get("failCount") + 1);
+			AllTestStatusCounter.get(testcasename).put("failCount",
+					AllTestStatusCounter.get(testcasename).get("failCount") + 1);
 			break;
 		case FATAL:
-			StatusCounter.put("failCount", StatusCounter.get("failCount") + 1);
+			AllTestStatusCounter.get(testcasename).put("failCount",
+					AllTestStatusCounter.get(testcasename).get("failCount") + 1);
 			break;
 		case WARNING:
-			StatusCounter.put("warnCount", StatusCounter.get("warnCount") + 1);
+			AllTestStatusCounter.get(testcasename).put("warnCount",
+					AllTestStatusCounter.get(testcasename).get("warnCount") + 1);
 			break;
 		}
 	}
+
+//	public void report(Status status, String description) throws Exception {
+//
+//		String scpath = getScreenshot(screenshotfolder);
+//		if (status.equals(Status.INFO)) {
+//			System.out.println(status + " - " + description);
+//			exreport.log(status, description);
+//		} else {
+//			System.out.println(status + " - " + description);
+//			exreport.log(status, description, MediaEntityBuilder.createScreenCaptureFromPath(scpath).build());
+//		}
+//
+//		StatusCounter.put("totalCount", StatusCounter.get("totalCount") + 1);
+//		switch (status) {
+//		case PASS:
+//			StatusCounter.put("passCount", StatusCounter.get("passCount") + 1);
+//			break;
+//		case INFO:
+//			StatusCounter.put("passCount", StatusCounter.get("passCount") + 1);
+//			break;
+//		case SKIP:
+//			StatusCounter.put("passCount", StatusCounter.get("passCount") + 1);
+//			break;
+//		case FAIL:
+//			StatusCounter.put("failCount", StatusCounter.get("failCount") + 1);
+//			break;
+//		case DEBUG:
+//			StatusCounter.put("failCount", StatusCounter.get("failCount") + 1);
+//			break;
+//		case ERROR:
+//			StatusCounter.put("failCount", StatusCounter.get("failCount") + 1);
+//			break;
+//		case FATAL:
+//			StatusCounter.put("failCount", StatusCounter.get("failCount") + 1);
+//			break;
+//		case WARNING:
+//			StatusCounter.put("warnCount", StatusCounter.get("warnCount") + 1);
+//			break;
+//		}
+//	}
 
 	public String getScreenshot(String ScreenshotFolder) {
 		TakesScreenshot ts = (TakesScreenshot) driver;
@@ -95,7 +157,6 @@ public class Reporting extends GenericReusbales {
 			String reporthsummaryPath = "";
 
 			// Create summary Folder
-			reportsummaryfolder = System.getProperty("user.dir") + "/extentreports/" + "/TestSummary";
 			createFolder(reportsummaryfolder);
 
 			String reportsummaryName = "TestSummary" + "_" + timeStamp() + ".html";
@@ -112,7 +173,27 @@ public class Reporting extends GenericReusbales {
 		}
 	}
 
-	public void summaryTable(String testName, String reportPath, String resultStatus, String exeTime) {
+//
+//	public static void summaryTable(String testName, String reportPath, String resultStatus, String exeTime, String env,
+//			String browser) {
+//		String status;
+//
+//		if (resultStatus.equalsIgnoreCase("pass"))
+//			status = "<font color=\"green\">" + resultStatus.toUpperCase() + "</font>";
+//		else
+//			status = "<font color=\"red\">" + resultStatus.toUpperCase() + "</font>";
+//
+//		reportTable = reportTable + "<tr>  <td> <center> <a href=" + reportPath + ">" + testName
+//				+ "</center> </td> <td> <center>" + status + "</center> </td> <td> <center>" + exeTime
+//				+ "</center> </td> <td> <center>" + env + "</center> </td>" + "<td> <center>" + browser
+//				+ "</center> </td>" + "<td> <center>" + StatusCounter.get("totalCount")
+//				+ "</center> </td> <td> <center>" + StatusCounter.get("passCount") + "</center> </td> <td> <center>"
+//				+ StatusCounter.get("failCount") + "</center> </td> <td> <center>" + StatusCounter.get("warnCount")
+//				+ "</center> </td> </tr>";
+//	}
+
+	public static void summaryTable(String testName, String reportPath, String resultStatus, String exeTime, String env,
+			String browser) {
 		String status;
 
 		if (resultStatus.equalsIgnoreCase("pass"))
@@ -122,15 +203,19 @@ public class Reporting extends GenericReusbales {
 
 		reportTable = reportTable + "<tr>  <td> <center> <a href=" + reportPath + ">" + testName
 				+ "</center> </td> <td> <center>" + status + "</center> </td> <td> <center>" + exeTime
-				+ "</center> </td> <td> <center>" + StatusCounter.get("totalCount") + "</center> </td> <td> <center>"
-				+ StatusCounter.get("passCount") + "</center> </td> <td> <center>" + StatusCounter.get("failCount")
-				+ "</center> </td> <td> <center>" + StatusCounter.get("warnCount") + "</center> </td> </tr>";
+				+ "</center> </td> <td> <center>" + env + "</center> </td>" + "<td> <center>" + browser
+				+ "</center> </td>" + "<td> <center>" + AllTestStatusCounter.get(testName).get("totalCount")
+				+ "</center> </td> <td> <center>" + AllTestStatusCounter.get(testName).get("passCount")
+				+ "</center> </td> <td> <center>" + AllTestStatusCounter.get(testName).get("failCount")
+				+ "</center> </td> <td> <center>" + AllTestStatusCounter.get(testName).get("warnCount")
+				+ "</center> </td> </tr>";
 	}
 
 	public String frameReportSummaryHTML(String startTime, String endTime) {
 		try {
-			StatusCounter.put("totalCount",
-					StatusCounter.get("passCount") + StatusCounter.get("failCount") + StatusCounter.get("warnCount"));
+			// StatusCounter.put("totalCount",
+			// StatusCounter.get("passCount") + StatusCounter.get("failCount") +
+			// StatusCounter.get("warnCount"));
 
 			String hostname = "Unknown";
 			InetAddress addr;
@@ -146,7 +231,7 @@ public class Reporting extends GenericReusbales {
 					+ "</th> </tr> <tr bgcolor=\"#66ccff\"> <th>Execution End Time</th> <th>" + endTime
 					+ "</th> </tr> <tr bgcolor=\"#66ccff\"> <th>Executed Machine Username</th> <th>" + user
 					+ "</th> </tr> </table>";
-			String part2 = "<table style=\"width:80%\" border=\"1\" bgcolor=\"#ffffe6\"> <tr bgcolor=\"#ffd11a\"> <th>Test Case Name</th> <th>Execution status</th> <th>Execution time</th> <th>Total Execution Steps</th> <th>PASSED Steps</th> <th>FAILED Steps</th> <th>WARNING Steps</th> </tr>";
+			String part2 = "<table style=\"width:80%\" border=\"1\" bgcolor=\"#ffffe6\"> <tr bgcolor=\"#ffd11a\"> <th>Test Case Name</th> <th>Execution status</th> <th>Execution time</th> <th>Envionment</th> <th>Browser</th> <th>Total Execution Steps</th> <th>PASSED Steps</th> <th>FAILED Steps</th> <th>WARNING Steps</th> </tr>";
 			String part3 = "</table> </body> </html>";
 			String fullReport = part1 + part2 + reportTable + part3;
 			return fullReport;

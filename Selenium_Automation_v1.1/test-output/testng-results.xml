@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
     <line>
       <![CDATA[Clicked on By.cssSelector: input[id='btnLogin']]]>
@@ -14,16 +14,12 @@
       <![CDATA[Clicked on By.cssSelector: input[id='btnLogin']]]>
     </line>
   </reporter-output>
-  <suite started-at="2020-05-01T14:33:08 IST" name="Automation Suite" finished-at="2020-05-01T14:33:27 IST" duration-ms="18591">
+  <suite started-at="2020-05-01T21:16:32 IST" name="Automation Suite" finished-at="2020-05-01T21:16:52 IST" duration-ms="20104">
     <groups>
     </groups>
-    <test started-at="2020-05-01T14:33:08 IST" name="Regression Test 4" finished-at="2020-05-01T14:33:27 IST" duration-ms="18406">
-      <class name="testcases.TC_004_SampleFunc">
-        <test-method is-config="true" signature="beforeSuite()[pri:0, instance:testcases.TC_004_SampleFunc@1139b2f3]" started-at="2020-05-01T14:33:08 IST" name="beforeSuite" finished-at="2020-05-01T14:33:08 IST" duration-ms="88" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeSuite -->
-        <test-method is-config="true" signature="beforeClass(java.lang.String, java.lang.String)[pri:0, instance:testcases.TC_004_SampleFunc@1139b2f3]" started-at="2020-05-01T14:33:08 IST" name="beforeClass" finished-at="2020-05-01T14:33:13 IST" duration-ms="4573" status="PASS">
+    <test started-at="2020-05-01T21:16:32 IST" name="Regression Test 3" finished-at="2020-05-01T21:16:52 IST" duration-ms="20104">
+      <class name="testcases.TC_003_SampleFunc">
+        <test-method is-config="true" signature="beforeClass(java.lang.String, java.lang.String)[pri:0, instance:testcases.TC_003_SampleFunc@1700915]" started-at="2020-05-01T21:16:32 IST" name="beforeClass" finished-at="2020-05-01T21:16:36 IST" duration-ms="4440" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -32,67 +28,25 @@
             </param>
             <param index="1">
               <value>
-                <![CDATA[01]]>
+                <![CDATA[02]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method signature="testcase()[pri:0, instance:testcases.TC_004_SampleFunc@1139b2f3]" started-at="2020-05-01T14:33:13 IST" name="testcase" finished-at="2020-05-01T14:33:26 IST" duration-ms="13705" status="PASS">
+        <test-method signature="testcase()[pri:0, instance:testcases.TC_003_SampleFunc@1700915]" started-at="2020-05-01T21:16:36 IST" name="testcase" finished-at="2020-05-01T21:16:52 IST" duration-ms="15507" status="PASS">
           <reporter-output>
             <line>
               <![CDATA[Clicked on By.cssSelector: input[id='btnLogin']]]>
             </line>
           </reporter-output>
         </test-method> <!-- testcase -->
-        <test-method is-config="true" signature="afterClass()[pri:0, instance:testcases.TC_004_SampleFunc@1139b2f3]" started-at="2020-05-01T14:33:26 IST" name="afterClass" finished-at="2020-05-01T14:33:27 IST" duration-ms="93" status="PASS">
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:testcases.TC_003_SampleFunc@1700915]" started-at="2020-05-01T21:16:52 IST" name="afterClass" finished-at="2020-05-01T21:16:52 IST" duration-ms="112" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-        <test-method is-config="true" signature="afterSuite(java.lang.String)[pri:0, instance:testcases.TC_004_SampleFunc@1139b2f3]" started-at="2020-05-01T14:33:27 IST" name="afterSuite" finished-at="2020-05-01T14:33:30 IST" duration-ms="3225" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterSuite -->
-      </class> <!-- testcases.TC_004_SampleFunc -->
-    </test> <!-- Regression Test 4 -->
-    <test started-at="2020-05-01T14:33:08 IST" name="Regression Test 2" finished-at="2020-05-01T14:33:27 IST" duration-ms="18591">
-      <class name="testcases.TC_002_SampleFunc">
-        <test-method is-config="true" signature="beforeClass(java.lang.String, java.lang.String)[pri:0, instance:testcases.TC_002_SampleFunc@654f0d9c]" started-at="2020-05-01T14:33:08 IST" name="beforeClass" finished-at="2020-05-01T14:33:13 IST" duration-ms="4575" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[01]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeClass -->
-        <test-method signature="testcase()[pri:0, instance:testcases.TC_002_SampleFunc@654f0d9c]" started-at="2020-05-01T14:33:13 IST" name="testcase" finished-at="2020-05-01T14:33:27 IST" duration-ms="13897" status="PASS">
-          <reporter-output>
-            <line>
-              <![CDATA[Clicked on By.cssSelector: input[id='btnLogin']]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- testcase -->
-        <test-method is-config="true" signature="afterClass()[pri:0, instance:testcases.TC_002_SampleFunc@654f0d9c]" started-at="2020-05-01T14:33:27 IST" name="afterClass" finished-at="2020-05-01T14:33:27 IST" duration-ms="83" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterClass -->
-      </class> <!-- testcases.TC_002_SampleFunc -->
-    </test> <!-- Regression Test 2 -->
+      </class> <!-- testcases.TC_003_SampleFunc -->
+    </test> <!-- Regression Test 3 -->
   </suite> <!-- Automation Suite -->
 </testng-results>

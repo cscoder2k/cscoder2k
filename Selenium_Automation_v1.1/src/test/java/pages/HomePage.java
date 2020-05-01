@@ -6,6 +6,8 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.aventstack.extentreports.Status;
+
 import utils.Datatable;
 import utils.GenericReusbales;
 import utils.ObjectHandlers;
@@ -74,6 +76,38 @@ public class HomePage extends GenericReusbales {
 		// Close browser
 		driver.close();
 		System.out.println(testcase.get("testcasename") + " - Browser Closed");
+	}
+
+	public void sample_pass() throws Exception {
+		reporting.report(Status.PASS, "Sample desc");
+	}
+
+	public void sample_fail() throws Exception {
+		reporting.report(Status.FAIL, "Sample desc");
+	}
+
+	public void sample_fatal() throws Exception {
+		reporting.report(Status.FATAL, "Sample desc");
+	}
+
+	public void sample_skip() throws Exception {
+		reporting.report(Status.SKIP, "Sample desc");
+	}
+
+	public void sample_err() throws Exception {
+		reporting.report(Status.ERROR, "Sample desc");
+	}
+
+	public void sample_debug() throws Exception {
+		reporting.report(Status.DEBUG, "Sample desc");
+	}
+
+	public void sample_warn() throws Exception {
+		reporting.report(Status.WARNING, "Sample desc");
+	}
+
+	public void sample_info() throws Exception {
+		reporting.report(Status.INFO, "Sample desc");
 	}
 
 }

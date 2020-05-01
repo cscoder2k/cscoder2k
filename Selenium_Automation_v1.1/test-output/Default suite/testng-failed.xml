@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testcases.TC_002_SampleFunc">
+      <class name="testcases.TC_001_SampleFunc">
         <methods>
           <include name="beforeClass"/>
-          <include name="afterSuite"/>
           <include name="testcase"/>
+          <include name="afterSuite"/>
           <include name="afterClass"/>
           <include name="beforeSuite"/>
         </methods>
-      </class> <!-- testcases.TC_002_SampleFunc -->
+      </class> <!-- testcases.TC_001_SampleFunc -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

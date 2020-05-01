@@ -91,7 +91,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">2 methods,   2 passed</span>
+                    <span class="method-stats">1 method,   1 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -102,12 +102,7 @@
                     <div class="method-list-content passed suite-Automation_Suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Automation_Suite" title="testcases.TC_004_SampleFunc" class="method navigator-link" hash-for-method="testcase">testcase</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Automation_Suite" title="testcases.TC_002_SampleFunc" class="method navigator-link" hash-for-method="testcase">testcase</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Automation_Suite" title="testcases.TC_003_SampleFunc" class="method navigator-link" hash-for-method="testcase">testcase</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Automation_Suite -->
@@ -125,22 +120,7 @@
           <div class="suite-Automation_Suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">testcases.TC_002_SampleFunc</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="testcase">
-                  </a> <!-- testcase -->
-                  <span class="method-name">testcase</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Automation_Suite-class-passed -->
-          <div class="suite-Automation_Suite-class-passed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">testcases.TC_004_SampleFunc</span>
+              <span class="class-name">testcases.TC_003_SampleFunc</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
@@ -177,14 +157,14 @@
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Regression Test 2 --&gt;
   &lt;test thread-count=&quot;4&quot; parallel=&quot;tests&quot; name=&quot;Regression Test 3&quot;&gt;
-    &lt;parameter name=&quot;environment&quot; value=&quot;01&quot;/&gt;
+    &lt;parameter name=&quot;environment&quot; value=&quot;02&quot;/&gt;
     &lt;parameter name=&quot;browser&quot; value=&quot;chrome&quot;/&gt;
     &lt;classes&gt;
       &lt;class name=&quot;testcases.TC_003_SampleFunc&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Regression Test 3 --&gt;
   &lt;test thread-count=&quot;4&quot; parallel=&quot;tests&quot; name=&quot;Regression Test 4&quot;&gt;
-    &lt;parameter name=&quot;environment&quot; value=&quot;01&quot;/&gt;
+    &lt;parameter name=&quot;environment&quot; value=&quot;02&quot;/&gt;
     &lt;parameter name=&quot;browser&quot; value=&quot;chrome&quot;/&gt;
     &lt;classes&gt;
       &lt;class name=&quot;testcases.TC_004_SampleFunc&quot;/&gt;
@@ -236,20 +216,16 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(2);
+data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'testcase')
-data.setCell(0, 2, 'testcases.TC_002_SampleFunc')
-data.setCell(0, 3, 13897);
-data.setCell(1, 0, 1)
-data.setCell(1, 1, 'testcase')
-data.setCell(1, 2, 'testcases.TC_004_SampleFunc')
-data.setCell(1, 3, 13705);
+data.setCell(0, 2, 'testcases.TC_003_SampleFunc')
+data.setCell(0, 3, 15507);
 window.suiteTableData['Automation_Suite']= { tableData: data, tableDiv: 'times-div-Automation_Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 18 seconds</span>
+              <span class="suite-total-time">Total running time: 20 seconds</span>
               <div id="times-div-Automation_Suite">
               </div> <!-- times-div-Automation_Suite -->
             </div> <!-- times-div -->
@@ -260,12 +236,6 @@ return data;
             <span class="header-content">Reporter output for Automation Suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
-            <div class="reporter-method-div">
-              <span class="reporter-method-name">testcase</span>
-              <div class="reporter-method-output-div">
-                <span class="reporter-method-output">Clicked on By.cssSelector: input[id='btnLogin']</span>
-              </div> <!-- reporter-method-output-div -->
-            </div> <!-- reporter-method-div -->
             <div class="reporter-method-div">
               <span class="reporter-method-name">testcase</span>
               <div class="reporter-method-output-div">
@@ -294,94 +264,94 @@ return data;
               </div> <!-- configuration-suite before -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
-              <div class="chronological-class-name">testcases.TC_002_SampleFunc</div> <!-- chronological-class-name -->
-              <div class="configuration-class before">
-                <span class="method-name">beforeClass(chrome, 01)</span>
-                <span class="method-start">123 ms</span>
-              </div> <!-- configuration-class before -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
               <div class="chronological-class-name">testcases.TC_001_SampleFunc</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
                 <span class="method-name">beforeClass(chrome, 01)</span>
-                <span class="method-start">124 ms</span>
-              </div> <!-- configuration-class before -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">testcases.TC_003_SampleFunc</div> <!-- chronological-class-name -->
-              <div class="configuration-class before">
-                <span class="method-name">beforeClass(chrome, 01)</span>
-                <span class="method-start">124 ms</span>
+                <span class="method-start">120 ms</span>
               </div> <!-- configuration-class before -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">testcases.TC_004_SampleFunc</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
-                <span class="method-name">beforeClass(chrome, 01)</span>
-                <span class="method-start">125 ms</span>
+                <span class="method-name">beforeClass(chrome, 02)</span>
+                <span class="method-start">121 ms</span>
+              </div> <!-- configuration-class before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">testcases.TC_003_SampleFunc</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">beforeClass(chrome, 02)</span>
+                <span class="method-start">122 ms</span>
               </div> <!-- configuration-class before -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">testcases.TC_002_SampleFunc</div> <!-- chronological-class-name -->
-              <div class="test-method">
-                <span class="method-name">testcase</span>
-                <span class="method-start">4705 ms</span>
-              </div> <!-- test-method -->
+              <div class="configuration-class before">
+                <span class="method-name">beforeClass(chrome, 01)</span>
+                <span class="method-start">122 ms</span>
+              </div> <!-- configuration-class before -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
-              <div class="chronological-class-name">testcases.TC_001_SampleFunc</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">testcases.TC_004_SampleFunc</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">testcase</span>
-                <span class="method-start">4705 ms</span>
+                <span class="method-start">4572 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">testcases.TC_003_SampleFunc</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">testcase</span>
-                <span class="method-start">4705 ms</span>
+                <span class="method-start">4572 ms</span>
               </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">testcases.TC_002_SampleFunc</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">testcase</span>
+                <span class="method-start">4572 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">testcases.TC_001_SampleFunc</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">testcase</span>
+                <span class="method-start">4573 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">testcases.TC_002_SampleFunc</div> <!-- chronological-class-name -->
+              <div class="configuration-class after">
+                <span class="method-name">afterClass</span>
+                <span class="method-start">16771 ms</span>
+              </div> <!-- configuration-class after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">testcases.TC_004_SampleFunc</div> <!-- chronological-class-name -->
-              <div class="test-method">
-                <span class="method-name">testcase</span>
-                <span class="method-start">4706 ms</span>
-              </div> <!-- test-method -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">testcases.TC_003_SampleFunc</div> <!-- chronological-class-name -->
               <div class="configuration-class after">
                 <span class="method-name">afterClass</span>
-                <span class="method-start">15895 ms</span>
+                <span class="method-start">17269 ms</span>
               </div> <!-- configuration-class after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">testcases.TC_001_SampleFunc</div> <!-- chronological-class-name -->
               <div class="configuration-class after">
                 <span class="method-name">afterClass</span>
-                <span class="method-start">17104 ms</span>
+                <span class="method-start">18546 ms</span>
               </div> <!-- configuration-class after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
-              <div class="chronological-class-name">testcases.TC_004_SampleFunc</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">testcases.TC_003_SampleFunc</div> <!-- chronological-class-name -->
               <div class="configuration-class after">
                 <span class="method-name">afterClass</span>
-                <span class="method-start">18414 ms</span>
-              </div> <!-- configuration-class after -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">testcases.TC_002_SampleFunc</div> <!-- chronological-class-name -->
-              <div class="configuration-class after">
-                <span class="method-name">afterClass</span>
-                <span class="method-start">18608 ms</span>
+                <span class="method-start">20085 ms</span>
               </div> <!-- configuration-class after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">testcases.TC_004_SampleFunc</div> <!-- chronological-class-name -->
               <div class="configuration-suite after">
                 <span class="method-name">afterSuite(chrome)</span>
-                <span class="method-start">18707 ms</span>
+                <span class="method-start">20221 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

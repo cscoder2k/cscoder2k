@@ -46,11 +46,11 @@ public class Base extends GenericReusbales {
 	public ExtentTest exreport;
 	public Date TestCaseStartTime, TestCaseEndTime;
 	public int passCount, failCount, warnCount, totalCount;
-	public String datatablePath, environment;
+	public String datatablePath, environment, browser;
 	public XSSFWorkbook workbook;
 	public String testcasename, description;
 	public String startTime, endTime, duration;
-	public static HashMap<String, Integer> StatusCounter = new HashMap<String, Integer>();
+	public HashMap<String, Integer> StatusCounter = new HashMap<String, Integer>();
 	public HashMap testcase = new HashMap();
 
 	/**
@@ -72,6 +72,7 @@ public class Base extends GenericReusbales {
 			throws IOException {
 
 		environment = env;
+		browser = browsername;
 
 		// Initialize status count
 		initStatusCount();
@@ -88,6 +89,7 @@ public class Base extends GenericReusbales {
 		// Assign the test case details into hashmap
 		testcase.put("driver", driver);
 		testcase.put("environment", environment);
+		testcase.put("browser", browsername);
 		testcase.put("workbook", workbook);
 		testcase.put("exreport", exreport);
 		testcase.put("screenshotfolder", screenshotfolder);
@@ -169,10 +171,6 @@ public class Base extends GenericReusbales {
 		screenshotfolder = testreportfolder + "/Screenshots";
 		createFolder(screenshotfolder);
 
-//		// Create summary Folder
-//		String reportsummaryfolder = reportFolder + "/" + "TestSummary";
-//		createFolder(reportsummaryfolder);
-
 		// start reporters
 		htmlreporter = new ExtentHtmlReporter(reportPath);
 		htmlreporter.config().setReportName(generic.getConfig("projectTitle"));
@@ -200,7 +198,8 @@ public class Base extends GenericReusbales {
 		TestCaseEndTime = getNow();
 		String duration = exreport.getModel().getRunDuration();
 		extent.flush();
-		reporting.summaryTable(testcasename, reportPath, exreport.getStatus().toString(), duration);
+		reporting.summaryTable(testcasename, reportPath, exreport.getStatus().toString(), duration, environment,
+				browser);
 	}
 
 	public void teardownexception(Reporting reporting, Exception e) {

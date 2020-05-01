@@ -11,7 +11,7 @@ public class TC_004_SampleFunc extends Base {
 	public TC_004_SampleFunc() {
 		testcasename = this.getClass().getSimpleName();
 		testcase.put("testcasename", testcasename);
-		description = "To check the login functionality of the application";
+		description = "To check the sample functionality of the application";
 	}
 
 	HomePage homepage;
