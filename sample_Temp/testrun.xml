@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="sample suite" parallel = "methods" thread-count = "4">
+	<test name = "sample test">
+		<classes>
+			<class name="testcases.TC007_parallel" />
+			<class name="testcases.TC008_parallel" />
+			<class name="testcases.TC009_parallel" />
+			<class name="testcases.TC010_parallel" />
+
+		</classes>
+	</test>
+</suite>
