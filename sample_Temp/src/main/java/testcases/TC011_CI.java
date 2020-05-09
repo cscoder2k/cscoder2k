@@ -14,6 +14,7 @@ public class TC011_CI extends reusable {
 		loginHRM();
 
 		closeBrowser();
+		System.out.println("Completed");
 	}
 
 }
