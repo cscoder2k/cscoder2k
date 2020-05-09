@@ -39,6 +39,7 @@ public class reusable {
 		driver.findElement(BTN_LOGIN).click();
 	}
 
+	
 	public void closeBrowser() {
 		driver.close();
 	}
