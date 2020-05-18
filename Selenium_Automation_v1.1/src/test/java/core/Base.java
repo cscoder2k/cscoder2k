@@ -108,14 +108,6 @@ public class Base extends GenericReusbales {
 	public void afterSuite(@Optional(defaultbrowser) String browsername) throws IOException {
 		endTime = getTime();
 		String reporthPath = reporting.reportSummary(reporting.frameReportSummaryHTML(startTime, endTime));
-		/**
-		 * Clear "scoped_dir" files from %Temp% folder which will be created during
-		 * execution. If the driver.close doen't work properly, these "scoped_dir" files
-		 * will not be auto cleared which will increase the machine storage So it is
-		 * better to delete all these files after script execiution.
-		 */
-		// TODO later
-		deleteTempFiles();
 
 		// Initialize WebDriver
 		initWebDriver(browsername);
@@ -218,30 +210,9 @@ public class Base extends GenericReusbales {
 			System.out.println(testcasename + " - Exception Occured.  " + e.getMessage());
 			e1.printStackTrace();
 			driver.close();
+			driver.quit();
 		}
 		Assert.assertEquals(true, false);
 	}
 
-	public void deleteTempFiles() {
-		// quit driver
-		if (driver != null)
-			driver.quit();
-
-//        // delete all "scoped_dir" temp folders 
-//        String tempfolder = System.IO.Path.GetTempPath();
-//        String[] tempfiles = Directory.GetDirectories(tempfolder, "scoped_dir*", SearchOption.AllDirectories);
-//        foreach (String tempfile in tempfiles)
-//        {
-//            try
-//            {
-//                System.IO.DirectoryInfo directory = new System.IO.DirectoryInfo(tempfolder);
-//                foreach (System.IO.DirectoryInfo subDirectory in directory.GetDirectories()) subDirectory.Delete(true);
-//            }
-//            catch (Exception ex)
-//            {
-//                writeEx("File '" + tempfile + "' could not be deleted:\r\n" +
-//                        "Exception: " + ex.Message + ".");
-//            }
-//        }
-	}
 }
